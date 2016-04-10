@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "nav.html" %}
+<header class="business-header" style="background: url('{{banner_url}}') center center no-repeat scroll;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="tagline"><a href="{{profile_url}}">@{{handler}}</a> aka {{name}}</h1>
+                <img src="{{profile_pic}}">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <hr>
+    {% for time in timeline %}
+    {% if forloop.counter|divisibleby:3 %}
+    <div class="row">
+    {% endif %}
+        <div class="col-sm-4">
+            <a href="{{time.user.url}}">
+                <img class="img-circle img-responsive img-center" src="{{time.user.profile_image_url}}" alt="Missing">
+            </a>
+            <h2>{{forloop.counter}}) {{time.text}}</h2>
+            <p><b>Date: </b>{{time.created_at}}</p>
+            <p><b>Retweets: </b>{{time.retweet_count}}</p>
+            <p> <b>Hashtags: </b>
+            {% for hash in time.hashtags %}
+            #{{hash.text}},
+            {% endfor %}
+            </p>
+        </div>
+    {% if forloop.counter|divisibleby:3 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+<!-- /.container -->
+{% endblock %}
