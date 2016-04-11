@@ -65,4 +65,5 @@ class MostUsedHashTag(APIView):
         occurrances_of_hashtags = Counter(hashtags)
         sorted_x = sorted(occurrances_of_hashtags.items(), key=operator.itemgetter(1))
 
-        return render(request, 'hashtags.html', {"hash_tags": reversed(sorted_x[-10:]), "screen_name": handler})
+        return render(request, 'hashtags.html',
+                      {"hash_tags": reversed(sorted_x[-10:]), "screen_name": handler, "length": len(sorted_x[-10:])})
