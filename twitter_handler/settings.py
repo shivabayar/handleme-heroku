@@ -19,7 +19,6 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 OUT_DIR = os.path.join(BASE_DIR, "out")
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -73,7 +72,6 @@ TEMPLATES = (
 )
 
 WSGI_APPLICATION = 'twitter_handler.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -133,3 +131,10 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+# TWITTER credentials
+CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
+print CONSUMER_KEY
+CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+ACCESS_TOKEN_KEY = os.environ.get('ACCESS_TOKEN_KEY')
+ACCESS_TOKEN_SECRET = os.environ.get('ACCESS_TOKEN_SECRET')
