@@ -12,9 +12,9 @@ import os
 
 
 api = twitter.Api(consumer_key=os.environ.get('CONSUMER_KEY'),
-                  consumer_secret='bsFtG0RVgaSlYkVUy3at99JuIdOdtsfRpVWf4SBbxII0yK0zyK',
-                  access_token_key='391498643-YrBYllBegsfTSPYslZHLpg86FiAsiFLTfd2HLDF7',
-                  access_token_secret='LgAQ8qP3XFRJX4vfauxKr0SB1QHm3ZonKyZSoBuFLI79R')
+                  consumer_secret=os.environ.get('CONSUMER_SECRET'),
+                  access_token_key=os.environ.get('ACCESS_TOKEN_KEY'),
+                  access_token_secret=os.environ.get('ACCESS_TOKEN_SECRET'))
 
 
 def get_index_page(request):

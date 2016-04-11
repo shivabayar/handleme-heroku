@@ -26,7 +26,7 @@ OUT_DIR = os.path.join(BASE_DIR, "out")
 SECRET_KEY = "kexq&wk#=r1mjmg_g&&4q*z34i&-j32wx5zmtqay0!^2$v(o_8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
@@ -132,9 +132,3 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-# TWITTER credentials
-CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
-print CONSUMER_KEY
-CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
-ACCESS_TOKEN_KEY = os.environ.get('ACCESS_TOKEN_KEY')
-ACCESS_TOKEN_SECRET = os.environ.get('ACCESS_TOKEN_SECRET')
