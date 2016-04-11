@@ -26,7 +26,7 @@ OUT_DIR = os.path.join(BASE_DIR, "out")
 SECRET_KEY = "kexq&wk#=r1mjmg_g&&4q*z34i&-j32wx5zmtqay0!^2$v(o_8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Application definition
 

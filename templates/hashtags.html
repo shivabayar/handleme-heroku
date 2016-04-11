@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% include "nav.html" %}
 <h1>Top {{length}} most used hashtags by @{{screen_name}}</h1>
 {% for hash_ in hash_tags %}
 <p>{{hash_.0}}  : {{hash_.1}} times</p>

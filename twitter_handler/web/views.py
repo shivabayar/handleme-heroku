@@ -83,7 +83,7 @@ class MostUsedHashTag(APIView):
 
             return render(request, 'hashtags.html',
                           {"hash_tags": reversed(sorted_x[-10:]), "screen_name": handler,
-                           "length": len(sorted_x[-10:])})
+                           "length": len(sorted_x[-10:]), 'handler': handler})
         except TwitterError:
             return render(request, 'data-not-found.html', {})
 
