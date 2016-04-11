@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Top most used hashtags by @{{screen_name}}</h1>
+{% for hash_ in hash_tags %}
+<p>{{hash_.0}}  : {{hash_.1}} times</p>
+{% endfor %}
+{% endblock %}

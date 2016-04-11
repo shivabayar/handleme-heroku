@@ -1,8 +1,13 @@
+import pdb
+
+import operator
+
 import twitter
+from collections import Counter
+
 from django.shortcuts import render
 from rest_framework.views import APIView
-
-import pdb
+from twitter import TwitterError
 
 api = twitter.Api(consumer_key='YM7lZLIwUlaKh70kcMFuodMQl',
                   consumer_secret='bsFtG0RVgaSlYkVUy3at99JuIdOdtsfRpVWf4SBbxII0yK0zyK',
@@ -38,13 +43,26 @@ class TimeLineView(APIView):
                 return render(request, 'search-result.html', response_dict)
             else:
                 return render(request, 'data-not-found.html', {})
-        except Exception:
+        except TwitterError:
             return render(request, 'data-not-found.html', {})
 
 
 class MostUsedHashTag(APIView):
     def get(self, request, handler):
-        # pdb.set_trace()
-        api.GetHomeTimeline(screen_name=handler)
-        # api.GetUser()
-        pass
+        timeline = api.GetUserTimeline(screen_name=handler, count=200)
+        hashtags = list()
+
+        for time in timeline:
+            hashes = time.hashtags
+            if len(hashes) == 0:
+                continue
+            temp_hash = list()
+            for hash_ in hashes:
+                temp_hash.append(hash_.text)
+
+            hashtags.extend(temp_hash)
+
+        occurrances_of_hashtags = Counter(hashtags)
+        sorted_x = sorted(occurrances_of_hashtags.items(), key=operator.itemgetter(1))
+
+        return render(request, 'hashtags.html', {"hash_tags": reversed(sorted_x[-10:]), "screen_name": handler})
